@@ -1,0 +1,77 @@
+<h1>Lista de productos actualizados</h1>
+
+<table id="table">
+    <tr>
+        <th>Id:</th>
+        <th>Título:</th>
+        <th>Descripción:</th>
+        <th>Código:</th>
+        <th>Precio:</th>
+        <th>Stock:</th>
+        <th>Imágenes:</th>
+    </tr>
+    {{#each products}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>{{code}}</td>
+            <td>{{price}}</td>
+            <td>{{stock}}</td>
+            <td>{{thumbnail}}</td>
+        </tr>
+    {{/each}}
+</table>
+
+  <form id="addNewProduct" action="/realtimeproducts"  method="post" >
+    <h2>Agregar Producto:</h2>
+
+    <div class="form-field">
+        <label for="title">Título</label>
+        <input type="text" name="title" id="title">
+    </div>
+
+    <div class="form-field">
+        <label for="description">Descripción</label>
+        <input type="text" name="description" id="description">
+    </div>
+
+    <div class="form-field">
+        <label for="code ">Código</label>
+        <input type="text" name="code" id="code">
+    </div>
+
+    <div class="form-field">
+        <label for="price ">Precio</label>
+        <input type="number" name="price" id="price" min="0" step="0.01">
+    </div>
+    
+    <div class="form-field">
+        <label for="stock ">Stock</label>
+        <input type="number" name="stock" id="stock">
+    </div>
+
+    <div class="form-field">
+        <label for="thumbnail">Imagen</label>
+        <input type="text" name="thumbnail" id="thumbnail">
+    </div>
+
+    <button type="submit">Agregar Producto</button>
+</form>
+
+<form id ="deleteProduct"  >
+    <h2>Borrar Productos:</h2>
+
+    <div class="form-field">
+        <label for="id">Id del Producto a eliminar</label>
+        <input type="text" name="id" id="id" >
+    </div>
+
+    <button type="submit">Eliminar Producto</button>
+</form>
+
+<div id="responseContainer"></div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
